@@ -13,7 +13,13 @@ class NewTasksTableViewController: UITableViewController{
     var newTasks: [Tasks] = [Tasks(name: "test", completed: false)]
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newTasks.count
+        var count = 0
+        for i in newTasks{
+            if (i.completed == false){
+                count+=1
+            }
+        }
+        return count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
