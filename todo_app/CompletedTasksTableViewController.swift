@@ -1,30 +1,30 @@
 //
-//  NewTasksViewController.swift
+//  CompletedTasksTableViewController.swift
 //  todo_app
 //
-//  Created by Alexander Caley on 10/22/18.
+//  Created by Alexander Caley on 10/24/18.
 //  Copyright © 2018 Alexander Caley. All rights reserved.
 //
 
 import UIKit
 
-var newTasks: [String] = ["No items"]
+var completedTasks: [String] = ["Nothing Completed"]
 
-class NewTasksTableViewController: UITableViewController{
-    
+class CompletedTasksTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newTasks.count
+        return completedTasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let task = newTasks[indexPath.row]
+        let task = completedTasks[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newTasksCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "completedTasksCell")!
         cell.textLabel?.text = task
         return cell
     }
+    
     //Item Pressed
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(newTasks[indexPath.row])
+        print(completedTasks[indexPath.row])
     }
 }
