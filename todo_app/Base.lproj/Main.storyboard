@@ -45,7 +45,7 @@
                         <barButtonItem key="rightBarButtonItem" title="+ New Task" id="om1-tQ-7iU">
                             <connections>
                                 <action selector="newTaskButtonPressed:" destination="MP2-vh-oev" id="rh8-Dy-GZ5"/>
-                                <segue destination="ihV-Dt-P7S" kind="show" id="ZLM-7x-WdO"/>
+                                <segue destination="ihV-Dt-P7S" kind="show" id="EPa-5d-aao"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -112,6 +112,7 @@
                                 <rect key="frame" x="274" y="185" width="46" height="30"/>
                                 <state key="normal" title="enter"/>
                                 <connections>
+                                    <action selector="enterButtonPressed:" destination="Ken-KX-d9G" eventType="touchUpInside" id="J6I-F0-n0V"/>
                                     <segue destination="3xV-Y1-TJm" kind="show" id="WTq-jZ-I7l"/>
                                 </connections>
                             </button>
@@ -139,6 +140,9 @@
                             <constraint firstItem="248-ke-wS9" firstAttribute="leading" secondItem="9Sl-Ez-vOa" secondAttribute="leading" id="zeL-lT-JyB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nR2-fA-2CJ"/>
+                        <connections>
+                            <outlet property="inputTextField" destination="9Sl-Ez-vOa" id="EEW-dN-krg"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQM-dm-LC6" userLabel="First Responder" sceneMemberID="firstResponder"/>

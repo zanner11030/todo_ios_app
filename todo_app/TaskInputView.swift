@@ -9,5 +9,21 @@
 import UIKit
 
 class TaskInputView: UIView{
+    @IBOutlet weak var inputTextField: UITextField!
+    
+    
+    @IBAction func enterButtonPressed(_ sender: Any) {
+        var checker = false
+        for (index, task) in allTasks.enumerated(){
+            if (task.name == "No Tasks yet"){
+                allTasks[index].name = inputTextField.text!
+                checker = true
+            }
+        }
+        
+        if (checker == false){
+            allTasks.append(Tasks(name:inputTextField.text!, completed: false))
+        }
+    }
     
 }
