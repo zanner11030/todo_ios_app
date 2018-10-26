@@ -21,6 +21,11 @@ class NewTasksTableViewController: UITableViewController{
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newTasks.count
     }
@@ -35,8 +40,12 @@ class NewTasksTableViewController: UITableViewController{
     //Item Pressed
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if (allTasks[1].name == "Nothing Complete yet"){
+        if (allTasks[1].name == "Nothing Complete yet" && allTasks.count > 2){
             allTasks.remove(at: 1)
+        }
+        
+        if (newTasks[indexPath.row].name == "No Tasks yet"){
+            return
         }
         
         var amountLeft = 0
@@ -50,8 +59,11 @@ class NewTasksTableViewController: UITableViewController{
             }
         }
         
-        if (amountLeft <= 1){
+        if (amountLeft < 1){
             allTasks.append(Tasks(name: "No Tasks yet", completed: false))
         }
+        tableView.reloadData()
+//        CompletedTasksTableViewController().tableView.reloadData()
+//        self.navigationController?.pushViewController(CompletedTasksTableViewController(), animated: true)
     }
 }

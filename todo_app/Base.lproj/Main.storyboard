@@ -36,8 +36,8 @@
                             <outlet property="delegate" destination="MP2-vh-oev" id="6gb-pc-x45"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="K3e-At-9iu">
-                        <barButtonItem key="leftBarButtonItem" title="Completed Tasks" id="WDq-Rt-8NH">
+                    <navigationItem key="navigationItem" title="To-Do" id="K3e-At-9iu">
+                        <barButtonItem key="leftBarButtonItem" title="Completed" id="WDq-Rt-8NH">
                             <connections>
                                 <segue destination="dGI-eS-t8U" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="dd7-fR-aFN"/>
                             </connections>
@@ -45,7 +45,9 @@
                         <barButtonItem key="rightBarButtonItem" title="+ New Task" id="om1-tQ-7iU">
                             <connections>
                                 <action selector="newTaskButtonPressed:" destination="MP2-vh-oev" id="rh8-Dy-GZ5"/>
-                                <segue destination="ihV-Dt-P7S" kind="show" id="EPa-5d-aao"/>
+                                <segue destination="ihV-Dt-P7S" kind="popoverPresentation" popoverAnchorBarButtonItem="om1-tQ-7iU" id="pLI-0g-Gdd">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -68,7 +70,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="completedTasksCell" id="v3t-gR-Fdy">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="completedTasksCell" id="v3t-gR-Fdy">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v3t-gR-Fdy" id="kQa-QL-mB3">
@@ -82,7 +84,7 @@
                             <outlet property="delegate" destination="HQb-Uk-ApW" id="tDb-OW-8jS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WJr-v7-cbq">
+                    <navigationItem key="navigationItem" title="Completed" id="WJr-v7-cbq">
                         <barButtonItem key="leftBarButtonItem" title="To-Do" id="hcR-0b-of0">
                             <connections>
                                 <segue destination="3xV-Y1-TJm" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="RlK-KV-U4N"/>
@@ -94,30 +96,29 @@
             </objects>
             <point key="canvasLocation" x="553" y="871"/>
         </scene>
-        <!--taskInput-->
+        <!--+ New Task-->
         <scene sceneID="fl7-1G-gFf">
             <objects>
-                <viewController title="taskInput" id="ihV-Dt-P7S" sceneMemberID="viewController">
+                <viewController title="+ New Task" id="ihV-Dt-P7S" customClass="TaskInputViewController" customModule="todo_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ken-KX-d9G" customClass="TaskInputView" customModule="todo_app" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Sl-Ez-vOa">
-                                <rect key="frame" x="16" y="185" width="250" height="30"/>
+                                <rect key="frame" x="16" y="141" width="250" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08f-9A-Upv">
-                                <rect key="frame" x="274" y="185" width="46" height="30"/>
+                                <rect key="frame" x="274" y="141" width="46" height="30"/>
                                 <state key="normal" title="enter"/>
                                 <connections>
-                                    <action selector="enterButtonPressed:" destination="Ken-KX-d9G" eventType="touchUpInside" id="J6I-F0-n0V"/>
-                                    <segue destination="3xV-Y1-TJm" kind="show" id="WTq-jZ-I7l"/>
+                                    <action selector="enterButtonPressed:" destination="ihV-Dt-P7S" eventType="touchUpInside" id="1nm-H8-qkc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Task:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="248-ke-wS9">
-                                <rect key="frame" x="16" y="156" width="79" height="21"/>
+                                <rect key="frame" x="16" y="112" width="79" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="PvP-5O-2Or"/>
                                 </constraints>
@@ -140,10 +141,10 @@
                             <constraint firstItem="248-ke-wS9" firstAttribute="leading" secondItem="9Sl-Ez-vOa" secondAttribute="leading" id="zeL-lT-JyB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nR2-fA-2CJ"/>
-                        <connections>
-                            <outlet property="inputTextField" destination="9Sl-Ez-vOa" id="EEW-dN-krg"/>
-                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="9Sl-Ez-vOa" id="cCX-IT-DcG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQM-dm-LC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,10 +168,10 @@
             </objects>
             <point key="canvasLocation" x="-386.39999999999998" y="31.934032983508249"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--CompletedNavigationController-->
         <scene sceneID="Y6O-A3-AbC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dGI-eS-t8U" sceneMemberID="viewController">
+                <navigationController title="CompletedNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="dGI-eS-t8U" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uc1-ug-dK8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -186,7 +187,4 @@
             <point key="canvasLocation" x="-386" y="871"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="WTq-jZ-I7l"/>
-    </inferredMetricsTieBreakers>
 </document>

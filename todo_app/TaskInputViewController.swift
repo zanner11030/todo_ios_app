@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskInputView: UIView{
+class TaskInputViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     
     
@@ -24,6 +24,6 @@ class TaskInputView: UIView{
         if (checker == false){
             allTasks.append(Tasks(name:inputTextField.text!, completed: false))
         }
+        dismiss(animated: true, completion: nil)
     }
-    
 }
