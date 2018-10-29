@@ -9,17 +9,15 @@
 import UIKit
 
 class NewTasksTableViewController: UITableViewController{
-
-    var newTasks = [Tasks]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        for task in allTasks{
-            if (task.completed == false){
-                newTasks.append(task)
-            }
-        }
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        for task in allTasks{
+//            if (task.completed == false){
+//                newTasks.append(task)
+//            }
+//        }
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,11 +25,11 @@ class NewTasksTableViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newTasks.count
+        return DATA.newTasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let task = newTasks[indexPath.row].name
+        let task = DATA.newTasks[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "newTasksCell")!
         cell.textLabel?.text = task
@@ -40,30 +38,19 @@ class NewTasksTableViewController: UITableViewController{
     //Item Pressed
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if (allTasks[1].name == "Nothing Complete yet" && allTasks.count > 2){
-            allTasks.remove(at: 1)
-        }
-        
-        if (newTasks[indexPath.row].name == "No Tasks yet"){
+        if (DATA.newTasks[indexPath.row] == "No Tasks yet"){
             return
         }
-        
-        var amountLeft = 0
-        
-        for (index, _) in allTasks.enumerated(){
-            if (allTasks[index].completed == false){
-                amountLeft+=1
-            }
-            if (allTasks[index].name == newTasks[indexPath.row].name){
-                allTasks[index].completed = true
-            }
+        else if (DATA.completed[0] == "Nothing Complete yet"){
+            DATA.completed.remove(at: 0)
         }
         
-        if (amountLeft < 1){
-            allTasks.append(Tasks(name: "No Tasks yet", completed: false))
+        DATA.completed.append(DATA.newTasks[indexPath.row])
+        DATA.newTasks.remove(at: indexPath.row)
+        
+        if (DATA.newTasks.count == 0){
+            DATA.newTasks.append("No Tasks yet")
         }
         tableView.reloadData()
-//        CompletedTasksTableViewController().tableView.reloadData()
-//        self.navigationController?.pushViewController(CompletedTasksTableViewController(), animated: true)
     }
 }
