@@ -21,6 +21,7 @@ class NewTasksTableViewController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        DATA.loadData()
         self.tableView.reloadData()
     }
     
@@ -51,6 +52,7 @@ class NewTasksTableViewController: UITableViewController{
         if (DATA.newTasks.count == 0){
             DATA.newTasks.append("No Tasks yet")
         }
+        DATA.saveData()
         tableView.reloadData()
     }
 }

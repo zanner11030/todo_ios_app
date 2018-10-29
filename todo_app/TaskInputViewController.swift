@@ -28,6 +28,7 @@ class TaskInputViewController: UIViewController {
         if (checker == false){
             DATA.newTasks.append(inputTextField.text!)
         }
+        DATA.saveData()
         dismiss(animated: true, completion: nil)
     }
 }
