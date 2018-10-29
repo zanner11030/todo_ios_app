@@ -90,6 +90,11 @@
                                 <segue destination="3xV-Y1-TJm" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="RlK-KV-U4N"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Clear items" id="3SE-SN-n7p">
+                            <connections>
+                                <action selector="clearItemsButtonPressed:" destination="HQb-Uk-ApW" id="O8D-hN-YjS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPv-xN-s3u" userLabel="First Responder" sceneMemberID="firstResponder"/>

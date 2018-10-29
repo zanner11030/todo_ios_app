@@ -26,4 +26,10 @@ class CompletedTasksTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Nothing
     }
+    @IBAction func clearItemsButtonPressed(_ sender: Any) {
+        DATA.completed.removeAll()
+        DATA.completed.append("Nothing Complete yet")
+        DATA.saveData()
+        self.tableView.reloadData()
+    }
 }
