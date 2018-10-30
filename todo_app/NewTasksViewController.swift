@@ -16,6 +16,11 @@ class NewTasksTableViewController: UITableViewController{
         self.tableView.reloadData()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadView), name: NSNotification.Name(rawValue: "load"), object: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DATA.newTasks.count
     }

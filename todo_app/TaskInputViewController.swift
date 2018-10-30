@@ -32,6 +32,7 @@ class TaskInputViewController: UIViewController {
             DATA.newTasks.append(inputTextField.text!)
         }
         DATA.saveData()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         dismiss(animated: true, completion: nil)
     }
 }
