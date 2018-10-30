@@ -10,15 +10,6 @@ import UIKit
 
 class NewTasksTableViewController: UITableViewController{
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        for task in allTasks{
-//            if (task.completed == false){
-//                newTasks.append(task)
-//            }
-//        }
-//    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DATA.loadData()

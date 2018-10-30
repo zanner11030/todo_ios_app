@@ -12,10 +12,13 @@ class TaskInputViewController: UIViewController {
     
     @IBOutlet weak var inputTextField: UITextField!
     
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func enterButtonPressed(_ sender: Any) {
         if (inputTextField.text! == ""){
-            dismiss(animated: true, completion: nil)
+            //dismiss(animated: true, completion: nil)
             return
         }
         var checker = false

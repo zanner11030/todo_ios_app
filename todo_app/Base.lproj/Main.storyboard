@@ -110,13 +110,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Sl-Ez-vOa">
-                                <rect key="frame" x="16" y="141" width="250" height="30"/>
+                                <rect key="frame" x="16" y="141" width="252" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="252" id="IPr-s6-TGl"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08f-9A-Upv">
-                                <rect key="frame" x="274" y="141" width="46" height="30"/>
+                                <rect key="frame" x="323" y="141" width="36" height="30"/>
                                 <state key="normal" title="enter"/>
                                 <connections>
                                     <action selector="enterButtonPressed:" destination="ihV-Dt-P7S" eventType="touchUpInside" id="1nm-H8-qkc"/>
@@ -131,18 +134,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIK-yy-HeQ">
+                                <rect key="frame" x="274" y="141" width="45" height="30"/>
+                                <state key="normal" title="cancel">
+                                    <color key="titleColor" red="0.95656573830000002" green="0.20439254600000001" blue="0.128168069" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="ihV-Dt-P7S" eventType="touchUpInside" id="pig-gM-yjk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nR2-fA-2CJ" firstAttribute="trailing" secondItem="9Sl-Ez-vOa" secondAttribute="trailing" constant="109" id="6Oh-9w-ASY"/>
                             <constraint firstItem="9Sl-Ez-vOa" firstAttribute="leading" secondItem="Ken-KX-d9G" secondAttribute="leadingMargin" id="7Y9-sP-4zD"/>
+                            <constraint firstItem="nR2-fA-2CJ" firstAttribute="trailing" secondItem="08f-9A-Upv" secondAttribute="trailing" constant="16" id="8Tb-C4-UAC"/>
                             <constraint firstItem="08f-9A-Upv" firstAttribute="top" secondItem="9Sl-Ez-vOa" secondAttribute="top" id="9C7-fa-RzJ"/>
+                            <constraint firstItem="08f-9A-Upv" firstAttribute="leading" secondItem="248-ke-wS9" secondAttribute="trailing" constant="228" id="CTG-2c-tIQ"/>
                             <constraint firstItem="9Sl-Ez-vOa" firstAttribute="top" secondItem="248-ke-wS9" secondAttribute="bottom" constant="8" id="FXz-zR-jcq"/>
-                            <constraint firstItem="9Sl-Ez-vOa" firstAttribute="top" secondItem="248-ke-wS9" secondAttribute="bottom" constant="8" id="Lk1-Ff-gQr"/>
+                            <constraint firstItem="08f-9A-Upv" firstAttribute="leading" secondItem="9Sl-Ez-vOa" secondAttribute="trailing" constant="55" id="KOv-Mk-9Co"/>
+                            <constraint firstItem="eIK-yy-HeQ" firstAttribute="leading" secondItem="248-ke-wS9" secondAttribute="trailing" constant="179" id="TAg-9P-eWA"/>
                             <constraint firstItem="248-ke-wS9" firstAttribute="top" secondItem="nR2-fA-2CJ" secondAttribute="top" constant="92" id="eBo-uT-FNq"/>
-                            <constraint firstItem="nR2-fA-2CJ" firstAttribute="trailing" secondItem="08f-9A-Upv" secondAttribute="trailing" constant="55" id="fDJ-8K-3Nk"/>
-                            <constraint firstItem="08f-9A-Upv" firstAttribute="leading" secondItem="9Sl-Ez-vOa" secondAttribute="trailing" constant="8" symbolic="YES" id="hmp-vm-4Ar"/>
-                            <constraint firstItem="08f-9A-Upv" firstAttribute="leading" secondItem="248-ke-wS9" secondAttribute="trailing" constant="179" id="yif-Ra-WZ3"/>
+                            <constraint firstItem="9Sl-Ez-vOa" firstAttribute="top" secondItem="eIK-yy-HeQ" secondAttribute="top" id="nGt-3r-Wd3"/>
+                            <constraint firstItem="08f-9A-Upv" firstAttribute="leading" secondItem="eIK-yy-HeQ" secondAttribute="trailing" constant="4" id="ugB-cV-DqB"/>
                             <constraint firstItem="248-ke-wS9" firstAttribute="leading" secondItem="9Sl-Ez-vOa" secondAttribute="leading" id="zeL-lT-JyB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nR2-fA-2CJ"/>
