@@ -27,9 +27,7 @@ class CompletedTasksTableViewController: UITableViewController{
         //Nothing
     }
     @IBAction func clearItemsButtonPressed(_ sender: Any) {
-        DATA.completed.removeAll()
-        DATA.completed.append("Nothing Complete yet")
-        DATA.saveData()
+        DATA.clearItems()
         self.tableView.reloadData()
     }
 }

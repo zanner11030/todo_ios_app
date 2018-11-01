@@ -33,4 +33,28 @@ class Defaults{
             self.completed = defaults.array(forKey: "completed") as! [String]
         }
     }
+    
+    func clearItems(){
+        DATA.completed.removeAll()
+        DATA.completed.append("Nothing Complete yet")
+        DATA.saveData()
+    }
+    
+    func itemCompleted(index:Int){
+            
+            if (DATA.newTasks[index] == "No Tasks yet"){
+                return
+            }
+            else if (DATA.completed[0] == "Nothing Complete yet"){
+                DATA.completed.remove(at: 0)
+            }
+            
+            DATA.completed.append(DATA.newTasks[index])
+            DATA.newTasks.remove(at: index)
+            
+            if (DATA.newTasks.count == 0){
+                DATA.newTasks.append("No Tasks yet")
+            }
+            DATA.saveData()
+    }
 }

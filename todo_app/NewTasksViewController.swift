@@ -34,21 +34,7 @@ class NewTasksTableViewController: UITableViewController{
     }
     //Item Pressed
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if (DATA.newTasks[indexPath.row] == "No Tasks yet"){
-            return
-        }
-        else if (DATA.completed[0] == "Nothing Complete yet"){
-            DATA.completed.remove(at: 0)
-        }
-        
-        DATA.completed.append(DATA.newTasks[indexPath.row])
-        DATA.newTasks.remove(at: indexPath.row)
-        
-        if (DATA.newTasks.count == 0){
-            DATA.newTasks.append("No Tasks yet")
-        }
-        DATA.saveData()
+        DATA.itemCompleted(index: indexPath.row)
         tableView.reloadData()
     }
 }
