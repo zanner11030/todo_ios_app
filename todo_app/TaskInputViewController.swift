@@ -12,28 +12,23 @@ class TaskInputViewController: UIViewController {
     
     @IBOutlet weak var inputTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        inputTextField.becomeFirstResponder()
+    }
+    
     @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func enterButtonPressed(_ sender: Any) {
-        if (inputTextField.text! == ""){
-            //dismiss(animated: true, completion: nil)
-            return
+        data.inputItem(item:inputTextField.text)
+        if (inputTextField.text != ""){
+            self.view.endEditing(true)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+            dismiss(animated: true, completion: nil)
         }
-        var checker = false
-        for (index, task) in DATA.newTasks.enumerated(){
-            if (task == "No Tasks yet"){
-                checker = true
-                DATA.newTasks[index] = inputTextField.text!
-            }
-        }
-        if (checker == false){
-            DATA.newTasks.append(inputTextField.text!)
-        }
-        DATA.saveData()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-        dismiss(animated: true, completion: nil)
     }
 }
 

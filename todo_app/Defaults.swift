@@ -8,7 +8,7 @@
 
 import Foundation
 
-var DATA = Defaults()
+var data = Defaults()
 
 class Defaults{
     var newTasks:[String]
@@ -17,6 +17,11 @@ class Defaults{
     init() {
         self.newTasks = ["No Tasks yet"]
         self.completed = ["Nothing Complete yet"]
+        let defaults = UserDefaults.standard
+        if (defaults.array(forKey: "newTasks") != nil){
+            self.newTasks = defaults.array(forKey: "newTasks") as! [String]
+            self.completed = defaults.array(forKey: "completed") as! [String]
+        }
     }
     
     func saveData(){
@@ -26,35 +31,45 @@ class Defaults{
         defaults.set(self.completed, forKey: "completed")
     }
     
-    func loadData(){
-        let defaults = UserDefaults.standard
-        if (defaults.array(forKey: "newTasks") != nil){
-            self.newTasks = defaults.array(forKey: "newTasks") as! [String]
-            self.completed = defaults.array(forKey: "completed") as! [String]
-        }
-    }
-    
     func clearItems(){
-        DATA.completed.removeAll()
-        DATA.completed.append("Nothing Complete yet")
-        DATA.saveData()
+        self.completed.removeAll()
+        self.completed.append("Nothing Complete yet")
+        self.saveData()
     }
     
     func itemCompleted(index:Int){
             
-            if (DATA.newTasks[index] == "No Tasks yet"){
+            if (self.newTasks[index] == "No Tasks yet"){
                 return
             }
-            else if (DATA.completed[0] == "Nothing Complete yet"){
-                DATA.completed.remove(at: 0)
+            else if (self.completed[0] == "Nothing Complete yet"){
+                self.completed.remove(at: 0)
             }
             
-            DATA.completed.append(DATA.newTasks[index])
-            DATA.newTasks.remove(at: index)
+            self.completed.append(self.newTasks[index])
+            self.newTasks.remove(at: index)
             
-            if (DATA.newTasks.count == 0){
-                DATA.newTasks.append("No Tasks yet")
+            if (self.newTasks.count == 0){
+                self.newTasks.append("No Tasks yet")
             }
-            DATA.saveData()
+            self.saveData()
+    }
+    
+    func inputItem(item:String?){
+        if (item! == ""){
+            //dismiss(animated: true, completion: nil)
+            return
+        }
+        var checker = false
+        for (index, task) in data.newTasks.enumerated(){
+            if (task == "No Tasks yet"){
+                checker = true
+                data.newTasks[index] = item!
+            }
+        }
+        if (checker == false){
+            data.newTasks.append(item!)
+        }
+        data.saveData()
     }
 }
