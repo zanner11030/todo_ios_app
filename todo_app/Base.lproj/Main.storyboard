@@ -51,6 +51,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="q5x-nn-WFr" kind="popoverPresentation" identifier="editTaskSegue" popoverAnchorView="8og-jJ-h4x" id="KqZ-eE-SwP">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cM0-6Q-Cw6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,22 +109,66 @@
         <!--editViewController-->
         <scene sceneID="0Zq-cj-es6">
             <objects>
-                <viewController storyboardIdentifier="editViewControllerID" title="editViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q5x-nn-WFr" customClass="editViewController" customModule="todo_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="editViewController" id="q5x-nn-WFr" customClass="editTaskViewController" customModule="todo_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x7d-Om-Ucd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aNf-dq-F2r">
-                                <rect key="frame" x="139" y="143" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ylh-31-NBC">
+                                <rect key="frame" x="16" y="141" width="252" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="252" id="a25-he-tAG"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRb-JY-XiB">
+                                <rect key="frame" x="323" y="141" width="36" height="30"/>
+                                <state key="normal" title="enter"/>
+                                <connections>
+                                    <action selector="enterButtonPressed:" destination="ihV-Dt-P7S" eventType="touchUpInside" id="rI9-Zg-zok"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Task:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSq-r0-LwZ">
+                                <rect key="frame" x="16" y="112" width="79" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="IuR-vr-jJI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMf-ln-1e2">
+                                <rect key="frame" x="274" y="141" width="45" height="30"/>
+                                <state key="normal" title="cancel">
+                                    <color key="titleColor" red="0.95656573830000002" green="0.20439254600000001" blue="0.128168069" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="ihV-Dt-P7S" eventType="touchUpInside" id="6vf-hC-gOd"/>
+                                    <action selector="cancelButtonPressed:" destination="q5x-nn-WFr" eventType="touchUpInside" id="tRC-fM-uOT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aSq-r0-LwZ" firstAttribute="top" secondItem="Xnt-et-3GX" secondAttribute="top" constant="92" id="8LE-MO-Z7n"/>
+                            <constraint firstItem="aSq-r0-LwZ" firstAttribute="leading" secondItem="Ylh-31-NBC" secondAttribute="leading" id="Dxf-AK-ynt"/>
+                            <constraint firstItem="BRb-JY-XiB" firstAttribute="leading" secondItem="Ylh-31-NBC" secondAttribute="trailing" constant="55" id="JOf-rD-erD"/>
+                            <constraint firstItem="Ylh-31-NBC" firstAttribute="top" secondItem="aSq-r0-LwZ" secondAttribute="bottom" constant="8" id="V4w-5f-skE"/>
+                            <constraint firstItem="mMf-ln-1e2" firstAttribute="leading" secondItem="aSq-r0-LwZ" secondAttribute="trailing" constant="179" id="WSt-3X-SLw"/>
+                            <constraint firstItem="Ylh-31-NBC" firstAttribute="top" secondItem="mMf-ln-1e2" secondAttribute="top" id="a8w-WD-lu7"/>
+                            <constraint firstItem="Ylh-31-NBC" firstAttribute="leading" secondItem="Xnt-et-3GX" secondAttribute="leading" constant="16" id="aps-tn-08X"/>
+                            <constraint firstItem="Xnt-et-3GX" firstAttribute="trailing" secondItem="BRb-JY-XiB" secondAttribute="trailing" constant="16" id="bNS-Xt-Jwl"/>
+                            <constraint firstItem="BRb-JY-XiB" firstAttribute="leading" secondItem="mMf-ln-1e2" secondAttribute="trailing" constant="4" id="d6U-0Y-BH9"/>
+                            <constraint firstItem="BRb-JY-XiB" firstAttribute="leading" secondItem="aSq-r0-LwZ" secondAttribute="trailing" constant="228" id="eYl-Id-g7z"/>
+                            <constraint firstItem="BRb-JY-XiB" firstAttribute="top" secondItem="Ylh-31-NBC" secondAttribute="top" id="izz-A1-a6o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Xnt-et-3GX"/>
                     </view>
+                    <connections>
+                        <outlet property="editTextField" destination="Ylh-31-NBC" id="eVs-e9-gaJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jl0-Jx-ekO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

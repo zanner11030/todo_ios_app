@@ -23,7 +23,7 @@ class TaskInputViewController: UIViewController {
     }
     
     @IBAction func enterButtonPressed(_ sender: Any) {
-        data.inputItem(item:inputTextField.text)
+        DATA.inputItem(item:inputTextField.text)
         if (inputTextField.text != ""){
             self.view.endEditing(true)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-var data = Defaults()
+var DATA = Defaults()
 
 class Defaults{
     var newTasks:[String]
@@ -61,15 +61,15 @@ class Defaults{
             return
         }
         var checker = false
-        for (index, task) in data.newTasks.enumerated(){
+        for (index, task) in DATA.newTasks.enumerated(){
             if (task == "No Tasks yet"){
                 checker = true
-                data.newTasks[index] = item!
+                DATA.newTasks[index] = item!
             }
         }
         if (checker == false){
-            data.newTasks.append(item!)
+            DATA.newTasks.append(item!)
         }
-        data.saveData()
+        DATA.saveData()
     }
 }

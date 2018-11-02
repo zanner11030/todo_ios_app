@@ -21,12 +21,17 @@ class NewTasksTableViewController: UITableViewController{
         self.tableView.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "load"), object: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.newTasks.count
+        return DATA.newTasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let task = data.newTasks[indexPath.row]
+        let task = DATA.newTasks[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "newTasksCell")!
         cell.textLabel?.text = task
@@ -39,8 +44,8 @@ class NewTasksTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         let complete = UITableViewRowAction(style: .normal, title: "Complete") { action, index in
-            data.itemCompleted(index: editActionsForRowAt.row)
-            if (data.newTasks.count == 1 && data.newTasks[0] == "No Tasks yet"){
+            DATA.itemCompleted(index: editActionsForRowAt.row)
+            if (DATA.newTasks.count == 1 && DATA.newTasks[0] == "No Tasks yet"){
                 self.tableView.reloadData()
             }
             else{
@@ -51,8 +56,10 @@ class NewTasksTableViewController: UITableViewController{
         complete.backgroundColor = .green
         
         let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
-            self.performSegue(withIdentifier: "editViewControllerID", sender: nil)
+            let index = editActionsForRowAt.row
+            self.performSegue(withIdentifier: "editTaskSegue", sender: nil)
             print("edit button tapped")
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "indexData"), object: index)
         }
         edit.backgroundColor = .blue
         
@@ -60,7 +67,7 @@ class NewTasksTableViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if (data.newTasks[indexPath.row] == "No Tasks yet"){return false}
+        if (DATA.newTasks[indexPath.row] == "No Tasks yet"){return false}
         else {return true}
     }
 }

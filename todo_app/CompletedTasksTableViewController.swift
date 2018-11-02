@@ -11,11 +11,11 @@ import UIKit
 class CompletedTasksTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.completed.count
+        return DATA.completed.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let task = data.completed[indexPath.row]
+        let task = DATA.completed[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "completedTasksCell")!
         cell.textLabel?.text = task
@@ -27,7 +27,7 @@ class CompletedTasksTableViewController: UITableViewController{
         //Nothing
     }
     @IBAction func clearItemsButtonPressed(_ sender: Any) {
-        data.clearItems()
+        DATA.clearItems()
         self.tableView.reloadData()
     }
 }
