@@ -34,6 +34,7 @@ class editTaskViewController:UIViewController{
     @IBAction func enterButtonPressed(_ sender: Any) {
         DATA.editTask(item: editTextField.text!, index: index)
         self.view.endEditing(true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         dismiss(animated: true, completion: nil)
     }
     
