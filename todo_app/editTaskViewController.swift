@@ -12,6 +12,8 @@ class editTaskViewController:UIViewController{
     
     @IBOutlet weak var editTextField: UITextField!
     
+    var index = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         editTextField.becomeFirstResponder()
@@ -24,8 +26,15 @@ class editTaskViewController:UIViewController{
     }
     
     @objc func notificationReceived(notification: NSNotification){
-        let index = notification.object as! Int
+        index = notification.object as! Int
+        //set text field
         editTextField.text = DATA.newTasks[index]
+    }
+    
+    @IBAction func enterButtonPressed(_ sender: Any) {
+        DATA.editTask(item: editTextField.text!, index: index)
+        self.view.endEditing(true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {

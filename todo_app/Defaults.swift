@@ -61,15 +61,19 @@ class Defaults{
             return
         }
         var checker = false
-        for (index, task) in DATA.newTasks.enumerated(){
+        for (index, task) in self.newTasks.enumerated(){
             if (task == "No Tasks yet"){
                 checker = true
-                DATA.newTasks[index] = item!
+                self.newTasks[index] = item!
             }
         }
         if (checker == false){
-            DATA.newTasks.append(item!)
+            self.newTasks.append(item!)
         }
-        DATA.saveData()
+        self.saveData()
+    }
+    
+    func editTask(item:String, index:Int){
+        self.newTasks[index] = item
     }
 }

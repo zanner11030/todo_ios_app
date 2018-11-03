@@ -127,6 +127,7 @@
                                 <rect key="frame" x="323" y="141" width="36" height="30"/>
                                 <state key="normal" title="enter"/>
                                 <connections>
+                                    <action selector="enterButtonPressed:" destination="q5x-nn-WFr" eventType="touchUpInside" id="kZf-lE-zM4"/>
                                     <action selector="enterButtonPressed:" destination="ihV-Dt-P7S" eventType="touchUpInside" id="rI9-Zg-zok"/>
                                 </connections>
                             </button>
